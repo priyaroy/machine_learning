@@ -74,5 +74,106 @@ For each validation, you get an MSE. So, at the end of cross validation, you get
 Bootstrapping example: assume we are interested in the average (or mean) height of people worldwide. We cannot measure all the people in the global population, so instead we sample only a tiny part of it, and measure that. Assume the sample is of size N; that is, we measure the heights of N individuals. From that single sample, only one estimate of the mean can be obtained. In order to reason about the population, we need some sense of the variability of the mean that we have computed. The simplest bootstrap method involves taking the original data set of N heights, and, using a computer, sampling from it to form a new sample (called a 'resample' or bootstrap sample) that is also of size N. The bootstrap sample is taken from the original by using sampling with replacement (e.g. we might 'resample' 5 times from [1,2,3,4,5] and get [2,5,4,4,1]), so, assuming N is sufficiently large, for all practical purposes there is virtually zero probability that it will be identical to the original "real" sample. This process is repeated a large number of times (typically 1,000 or 10,000 times), and for each of these bootstrap samples we compute its mean (each of these are called bootstrap estimates). We now have a histogram of bootstrap means. This provides an estimate of the shape of the distribution of the mean from which we can answer questions about how much the mean varies. (The method here, described for the mean, can be applied to almost any other statistic or estimator.) 
 
 In Bootstrapping, the main assumption is that the sample of N data points is an accurate representation of the population. One must understand that Bootstrapping does not give any new information other than what is contained in the sample itself. The power of this method is that resampling over that sample on a large enough scale reveals the sampling distribution of the statistic at issue, for example the mean. 
+
+\section{Numpy: Argpartition and Partition}
+
+These are two very useful features to partially sort arrays in Python. First, let us understand some basics of Numpy array arrays:
+
+Suppose, $x=[1,9,3,7,5,6,2,8]$. Here $D=8$ is the shape of the array, that is, it has $8$ elements.
+
+The following operations are very frequently used in Data science:
+
+\begin{itemize}
+	\item {Select first n elements of the array using $x[:n]$. \\
+		For example, $x[:5] = [1,9,3,7,5]$}
+	\item {Select last n elements of the array using $x[-n:]$. This is same as $x[D-n+1:D]$, where $D$ is the shape of the 1-dimensional array.\\
+		For example, $x[-5:] = x[8-5+1:8] = [7,5,6,2,8]$\\
+	A common application is in sorted arrays which are sorted in increasing order by default, and you want the 5 biggest numbers.}
+   \item {$x[5:] = x[5:D] = [5,6,2,8]$}
+   \item {$x[:-5] = x[1:D-5] = x[1:3]= [1,9,3]$}
+   
+\end{itemize}
+
+\subsection{Partition}
+
+Syntax: numpy.partition(array, k). It finds the $k+1^{th}$ smallest element of the array and partitions the array to the left and right of that element. All elements to the left are smaller, and all right elements are larger than the $k+1^{th}$ element. \\
+NOTE: the left and right partitions are not sorted.\\
+
+Partition is very useful because it saves a lot of computation time in many applications. For example, if you have an array of $20$ scores of attributes, and you want only the 3 smallest scores. Then, you do not need to sort the entire array, instead use Partition. Once you find the 3 smallest scores, you don't need to sort the remaining 17 scores.\\
+
+Example:$x=[1,9,3,7,5,6,2,8]$ 
+\begin{itemize}
+	\item {np.partition$(x,5)$ means partition about the $6$th smallest element.\\
+	np.partition$(x,5) = [6, 1, 3, 2, 5, 7, 9, 8]$. Here, the $6th$ smallest element is $7$.}
+ 
+	\item{np.partition$(x,-5)$ means partition about the $5$th ({}\bf not $6$th}) biggest element.  
+	np.partition$(x,-5)=[2, 3, 1, 5, 6, 7, 9, 8]$. Here, the $5th$ biggest element is $5$.
+\end{itemize}
+
+\subsection{Argpartition}
+
+Syntax: numpy.argpartition(array, k). It performs the job of partition but stores the indices of the elements and not the values. \\
+
+ArgPartition is very useful when you want to refer to the index of the array element. For example, you have an array of $20$ scores of attributes, and you want to select the attributes with 3 highest scores. In this case, you don't want the scores themselves, but you want the indices of the attributes corresponding to the 3 highest scores. This is used extensively in Data science where you want to select only the important attributes and drop the rest.\\ 
+
+Example: $x=[1,9,3,7,5,6,2,8]$ \\
+Indices\_of\_x $=[0,1,2,3,4,5,6,7]$
+\begin{itemize}
+	\item {np.partition$(x,5) = [6, 1, 3, 2, 5, 7, 9, 8]$.\\
+		Then, np.argpartition$(x,5) = [5,0,2,6,4,3,1,7]$, where index of 6 is 5, index of 1 is 0, index of 3 is 2 and so on.}
+	
+	\item{np.partition$(x,-5)=[2, 3, 1, 5, 6, 7, 9, 8]$\\
+		Then, np.argpartition$(x,-5)=[6,2,0,4,5,3,1,7]$}
+	
+	\item{np.partition$(x,-5)[-5:]=[5, 6, 7, 9, 8]$\\
+			Then, np.argpartition$(x,-5)[-5:]=[4,5,3,1,7]$. This gives the INDICES of the 5 biggest elements of x.}
+	
+	\end{itemize}
+
+\section{Lists and Tuples}
+There are fundamental differences between lists and tuples:\\
+{\bf Lists:}\\
+\begin{itemize}
+	\item are ordered
+	\item can contain arbitrary objects
+	\item can be accessed by index
+	\item can be nested, i.e. a list within a list
+	\item are mutable i.e. dimensions can be changed easily. E.g. append 
+	\item are dynamic
+\end{itemize}
+
+{\bf Tuples:}\\
+\begin{itemize}
+	\item are ordered
+	\item cannot be changed
+\end{itemize}
+
+Tuples are used when you don't want data to be modified. E.g., one of the components of our dictionary needs to be of immutable type. 
+
+
+
+
+A very good discussion with many examples can be found at:\\
+ \url{https://realpython.com/python-lists-tuples/}
+ 
+ \section{np.c\texorpdfstring{$\_$}}
+ 
+ This command attaches two 1-D arrays of same dimension together to make a matrix. Eg.:
+ 
+ $x = [1,2,3]$
+ 
+ $y = [5,6,7]$
+ 
+ $z = {\rm np.c\_}[x,y]$
+ 
+ $z$
+ 
+ Output:array \\
+ $[1,5],$\\
+ $[2,6],$\\
+ $[3,7]$
+ 
+ 
+
 \end{document}
 
