@@ -5,6 +5,9 @@
 \usepackage[latin9]{inputenc}
 \usepackage{babel}
 \usepackage{color}
+\usepackage{hyperref}
+\usepackage{url}
+
 \begin{document}
 	
 	\section{Estimate coefficient and Variance of Coefficient in Linear Regression}
@@ -162,7 +165,6 @@
 		\item are mutable i.e. dimensions can be changed easily. E.g. append 
 		\item are dynamic
 	\end{itemize}
-<<<<<<< HEAD
 	
 	{\bf Tuples:}\\
 	\begin{itemize}
@@ -178,7 +180,7 @@
 	A very good discussion with many examples can be found at:\\
 	\url{https://realpython.com/python-lists-tuples/}
 	
-	\section{np.c\texorpdfstring{$\_$}}
+	\section{np.c}
 	
 	This command attaches two 1-D arrays of same dimension together to make a matrix. Eg.:
 	
@@ -197,7 +199,7 @@
 	
 	\section{Standard Error, Root Mean Square Error, Standard Deviation}
 	Standard deviation is the square root of the sample variance. It has nothing to do with fits. \\
-	$\sigma = \sqrt\,\frac{\sum_{i}{(y_i - y_{mean})^2}}{n}$
+	$\sigma = \sqrt \frac{\sum_{i}{(y_i - y_{mean})^2}}{n}$
 	
 	where $y_mean$ is the mean of the response in the sample. \\
 	
@@ -219,8 +221,8 @@
 	
 	\section{Correlation and Covariance}
 	
-	A very nice explanation can be found at:\\
-	\url{https://towardsdatascience.com/let-us-understand-the-correlation-matrix-and-covariance-matrix-d42e6b643c22}\\
+	A very nice explanation can be found at 
+	\href{https://towardsdatascience.com/let-us-understand-the-correlation-matrix-and-covariance-matrix-d42e6b643c22}{link}\\
 	
 	Correlation $= cov(x,y)/\sigma_x\,\sigma_y$ = $= \sigma_(x,y)/\sigma_x\,\sigma_y$
 	
@@ -228,8 +230,8 @@
 	
 	\section{A/B Testing and Null Hypothesis}
 	
-	A very nice explanation can be found at:\\
-	\url{https://towardsdatascience.com/data-science-you-need-to-know-a-b-testing-f2f12aff619a}\\
+	A very nice explanation can be found at 
+	\href{https://towardsdatascience.com/data-science-you-need-to-know-a-b-testing-f2f12aff619a}{link}\\
 	
 	A/B testing is used to find that feature with property A gives a better response than the same feature with property B, in a specified time. For example, the feature can be Amazon website design A versus webdesign B. Note here that we are not comparing two different features, instead we are comparing two types of the same feature. The response can be 'website visitors that became customers'. For the A/B testing, we define a null hypothesis and an alternative hypothesis:
 	
@@ -238,6 +240,32 @@
 	
 	To perform the test, it is very important to create two random test samples within minimized bias. See the link for further details. \\
 	
-
+\section{Lagrange Multiplier}
+    This method is used when you want to maximize a function f(x,y) given a constraint g(x,y). A nice example is shown in a video from Khan's academy (\href{https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1}{link}). \\
+    
+    Example:\\
+    Goal: Maximize revenue, f, given a specific monthly budget, g, for a steel company.\\ 
+    
+    Revenue, $f(x,y)=100*x^{2/3}*y^{1/3}$
+    where,\\
+    x is hours of labor and y tons of steel used in product manufacture.\\
+    
+    Budget, $g= 20*x+2000*y = 20,000$ is the constraint (that is, you have $20,000$ dollars monthly budget).\\
+    
+    Maximizing revenue while satisfying the constraint means that the contour of f(x,y) for some revenue will be just touch g(x,y) and the point of tangent will be the desired values ($x_0, y_0$). Which means that at ($x_0, y_0$) the gradients of f(x,y) and g(x,y) match. That is,\\
+    
+    $\nabla f = \lambda \nabla g$. Solving this will give us ($x_0, y_0$) and $\lambda$.
+    
+    Here, $\lambda$ is the Lagrangian multiplier. 
+    
+    \section{Confidence Interval and Margin of Error}
+    A good explanation from Khan's academy is \href{https://www.khanacademy.org/math/statistics-probability/confidence-intervals-one-sample/introduction-to-confidence-intervals/v/confidence-intervals-and-margin-of-error}{here}.\\
+    
+    Suppose we want to estimate the percentage of votes candidate A will win at an upcoming election. We perform a survey on a sample population of $100$ and estimate it to be about $50\%$. Repeating this survey over n samples (with each sample consisting of $100$ people) will give us a normal distribution with an estimated mean of say about $0.54$ and a standard deviation of $0.05$. \\
+    
+    Note that a $2\sigma$ interval corresponds to a $95\%$ confidence interval. What it means is that there is a $95\%$ chance that the true percentage of votes the candidate A will win is within $0.54 \pm 2\sigma$. $2\sigma$ is call the margin of error. \\
+    So, another way of saying this is that "with $95\%$ confidence interval, between 0.44 to 0.64 voters will vote for A. The margin of error is 0.1".
+  
+     
 \end{document}
 
