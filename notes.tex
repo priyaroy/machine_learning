@@ -5,6 +5,8 @@
 \usepackage[latin9]{inputenc}
 \usepackage{babel}
 \usepackage{color}
+\usepackage{hyperref}
+
 \begin{document}
 	
 \section{Estimate coefficient and Variance of Coefficient in Linear Regression}
@@ -143,6 +145,7 @@ There are fundamental differences between lists and tuples:\\
 \end{itemize}
 
 {\bf Tuples:}\\
+
 \begin{itemize}
 	\item are ordered
 	\item cannot be changed
@@ -156,7 +159,7 @@ Tuples are used when you don't want data to be modified. E.g., one of the compon
 A very good discussion with many examples can be found at:\\
  \url{https://realpython.com/python-lists-tuples/}
  
- \section{np.c\texorpdfstring{$\_$}}
+ \section{np.c}
  
  This command attaches two 1-D arrays of same dimension together to make a matrix. Eg.:
  
@@ -173,7 +176,26 @@ A very good discussion with many examples can be found at:\\
  $[2,6],$\\
  $[3,7]$
  
- 
+\section{Correlation and Covariance}
+
+A very nice explanation can be found at:\\
+\url{https://towardsdatascience.com/let-us-understand-the-correlation-matrix-and-covariance-matrix-d42e6b643c22}\\
+
+Correlation $= cov(x,y)/\sigma_x\,\sigma_y$ = $= \sigma_(x,y)/\sigma_x\,\sigma_y$
+
+Correlation ranges from -1 to 1 whereas covariance ranges from -infinity to +infinity.
+
+\section{A/B Testing and Null Hypothesis}
+
+A very nice explanation can be found at:\\
+\url{https://towardsdatascience.com/data-science-you-need-to-know-a-b-testing-f2f12aff619a}\\
+
+A/B testing is used to find that feature with property A gives a better response than the same feature with property B, in a specified time. For example, the feature can be Amazon website design A versus webdesign B. Note here that we are not comparing two different features, instead we are comparing two types of the same feature. The response can be 'website visitors that became customers'. For the A/B testing, we define a null hypothesis and an alternative hypothesis:
+
+Null hypothesis (H0): Amazon.com visitors that receive Layout B will not have higher end-of-visit conversion rates compares to visitors that receive Layout A.\\
+Alternative hypothesis (H1): Amazon.com visitors that receive Layout B will have higher end-of-visit conversion rates compared to visitors that receive layout A\\
+
+To perform the test, it is very important to create two random test samples within minimized bias. See the link for further details. 
 
 \end{document}
 
