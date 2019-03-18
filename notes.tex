@@ -219,6 +219,9 @@
 	$\frac{residual}{\epsilon}$\\
 	where $\epsilon$ is the standard error. 
 	
+	\section{1-sigma interpretation}
+	Remember the rule "68-95-99.7". It tells us that for a variable with the standard normal distribution, 68$\%$ of the observations fall between -1 and 1 (within 1 standard deviation of the mean of 0), 95$\%$ fall between -2 and 2 (within 2 standard deviations of the mean) and 99.7$\%$ fall between -3 and 3 standard deviations. So, the chances of seeing an observation above 1-std. deviation is $(100-68)/2$ which is $16\%$. This is asked in many coding challenges.
+	
 	\section{Correlation and Covariance}
 	
 	A very nice explanation can be found at 
@@ -227,6 +230,22 @@
 	Correlation $= cov(x,y)/\sigma_x\,\sigma_y$ = $= \sigma_(x,y)/\sigma_x\,\sigma_y$
 	
 	Correlation ranges from -1 to 1 whereas covariance ranges from -infinity to +infinity.
+	
+	\section{Null hypothesis, P-Value and Pearson's Chi-square test}
+	
+	A very nice explanation of Pearson's Chi square test can be found in a Khan Academy video.\\
+	
+	How do we define null hypothesis? It can be defined as there is NO statistical difference between sets of observations. If we looking at any relationship between a  predictor and a response variable, then null hypothesis states that there is NO relationship between them. \\
+	
+	P-value is a way to accept or reject a null hypothesis. Traditionally, If the p-value is less than 0.05 (i.e. $5\%$), we reject the null hypothesis that there's no difference between the means and conclude that a significant difference does exist. If the p-value is larger than 0.05, we cannot conclude that a significant difference exists. Note that a null hypothesis is never accepted. It is only rejected. 
+	
+	{\color{red}Pearson's Chi-Square test}
+	
+	\section{Groupby in Pandas}
+	
+	{\color{red} explain that when we have a dataframe with 10 columns (including customer id, transactions, totalspent) and we groupby on customer id, aggragate on transactions with count(), totalspent with sum(), what happens to the other columns?}
+	
+
 	
 	\section{A/B Testing and Null Hypothesis}
 	

@@ -13,7 +13,10 @@
 \BOOKMARK [1][-]{section.9}{np.c}{}% 13
 \BOOKMARK [1][-]{section.10}{Standard Error, Root Mean Square Error, Standard Deviation}{}% 14
 \BOOKMARK [1][-]{section.11}{Identification of Outliers using Studentized Residuals}{}% 15
-\BOOKMARK [1][-]{section.12}{Correlation and Covariance}{}% 16
-\BOOKMARK [1][-]{section.13}{A/B Testing and Null Hypothesis}{}% 17
-\BOOKMARK [1][-]{section.14}{Lagrange Multiplier}{}% 18
-\BOOKMARK [1][-]{section.15}{Confidence Interval and Margin of Error}{}% 19
+\BOOKMARK [1][-]{section.12}{1-sigma interpretation}{}% 16
+\BOOKMARK [1][-]{section.13}{Correlation and Covariance}{}% 17
+\BOOKMARK [1][-]{section.14}{Null hypothesis, P-Value and Pearson's Chi-square test}{}% 18
+\BOOKMARK [1][-]{section.15}{Groupby in Pandas}{}% 19
+\BOOKMARK [1][-]{section.16}{A/B Testing and Null Hypothesis}{}% 20
+\BOOKMARK [1][-]{section.17}{Lagrange Multiplier}{}% 21
+\BOOKMARK [1][-]{section.18}{Confidence Interval and Margin of Error}{}% 22
